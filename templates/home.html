@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mdb.min.css') }}">
+</head>
+<body>
+    <div class="d-flex align-content-center justify-content-center">
+        <div class="text-center">
+            <h1 class="text-center">Welcome to Flask project</h1>
+            <p class="text-center">This is a simple application to try WebSocket functionality</p>
+
+            <h1 style="font-weight: bolder" id="count">{{ count }}</h1>
+            <button onclick="increaseCount()" class="btn btn-primary">Increment</button>
+        </div>
+    </div>
+</body>
+<script src="{{ url_for('static', filename='js/mdb.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/socket.io.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/home.js') }}"></script>
+</html>

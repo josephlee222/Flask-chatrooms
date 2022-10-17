@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatrooms Web</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mdb.min.css') }}">
+</head>
+<body>
+    <div class="container mt-3">
+        <h1>Chatrooms</h1>
+            <div class="row mt-5">
+                <div class="col-6">
+                    <input class="form-control" id="username" placeholder="Username">
+                </div>
+                <div class="col-6">
+                    <input class="form-control" id="room-id" placeholder="Room ID">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 d-grid">
+                    <button class="btn btn-primary mt-3" onclick="attemptToJoinRoom()" id="connect-btn">Connect</button>
+                </div>
+                <div class="col-md-6 d-grid">
+                    <button class="btn btn-danger mt-3" onclick="attemptToLeaveRoom()" id="disconnect-btn" disabled>Disconnect</button>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-12">
+                    <textarea class="form-control" readonly rows="10" id="logs">Chatroom logs will appear here.&#013;</textarea>
+                </div>
+            </div>
+        <div class="row mt-3">
+            <div class="col-9">
+                <input class="form-control" id="message" placeholder="Send a message..." disabled>
+            </div>
+            <div class="col-3 d-grid">
+                <button class="btn btn-primary" id="send-btn" onclick="sendMessage()" disabled>Send</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="{{ url_for('static', filename='js/mdb.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/socket.io.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/chatrooms.js') }}"></script>
+</html>
