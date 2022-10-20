@@ -11,10 +11,16 @@
         <h1>Chatrooms</h1>
             <div class="row mt-5">
                 <div class="col-6">
-                    <input class="form-control" id="username" placeholder="Username">
+                    <div class="form-outline">
+                        <input class="form-control" id="username">
+                        <label class="form-label" for="username">Username</label>
+                    </div>
                 </div>
                 <div class="col-6">
-                    <input class="form-control" id="room-id" placeholder="Room ID">
+                    <div class="form-outline">
+                        <input class="form-control" id="room-id">
+                        <label class="form-label" for="room-id">Room ID</label>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -28,12 +34,19 @@
 
             <div class="row mt-3">
                 <div class="col-12">
-                    <textarea class="form-control" readonly rows="10" id="logs">Chatroom logs will appear here.&#013;</textarea>
+                    <div class="form-outline">
+                        <textarea class="form-control" readonly rows="10" id="logs">Chatroom logs will appear here.&#013;</textarea>
+                        <label class="form-label" for="logs">Chat Log</label>
+                    </div>
                 </div>
             </div>
         <div class="row mt-3">
             <div class="col-9">
-                <input class="form-control" id="message" placeholder="Send a message..." disabled>
+                <div class="form-outline">
+                    <input class="form-control" id="message" maxlength="256" data-mdb-showcounter="true" disabled>
+                    <label class="form-label" for="message">Send a message...</label>
+                    <div class="form-helper"></div>
+                </div>
             </div>
             <div class="col-3 d-grid">
                 <button class="btn btn-primary" id="send-btn" onclick="sendMessage()" disabled>Send</button>

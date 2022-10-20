@@ -31,6 +31,11 @@ function writeToLog(text) {
     logs.innerHTML += text + "&#013;"
 }
 
+function clearLog() {
+    var logs = document.getElementById("logs")
+    logs.innerHTML = ""
+}
+
 function sendingDisabled(enabled) {
     document.getElementById("message").disabled = enabled
     document.getElementById("send-btn").disabled = enabled
@@ -46,6 +51,8 @@ function attemptToJoinRoom() {
     } else {
         room = roomId
         username = roomUsername
+        clearLog()
+        writeToLog("Connecting to room '" + roomId + "'.")
         ws.emit("joinRoom", {"sid": ws.id, "username": roomUsername, "roomId": roomId})
         sendingDisabled(false)
     }
@@ -59,10 +66,15 @@ function attemptToLeaveRoom() {
 
 function sendMessage() {
     var message = document.getElementById("message").value
-    if (message == "/count") {
-        ws.emit("incrementChat", {"roomId": room, "username": username})
+    if (message !== "") {
+        if (message === "/count") {
+            ws.emit("incrementChat", {"roomId": room, "username": username})
+        } else {
+            ws.emit("chat", {"roomId": room, message: username + ": " + message})
+        }
     } else {
-        ws.emit("chat", {"roomId": room, message: username + ": " + message})
+        writeToLog("Please enter a message.")
     }
+
     document.getElementById("message").value = ""
 }
